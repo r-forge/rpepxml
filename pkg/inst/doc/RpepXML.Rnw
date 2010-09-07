@@ -1,0 +1,71 @@
+\SweaveOpts{engine=R,eps=FALSE}
+
+%\VignetteIndexEntry{RpepXML: R interface to the pepXML format. }
+%\VignetteKeywords{Mass spectrometry, MSMS, proteomics}
+%\VignettePackage{RpepXML}
+
+\documentclass{Z}
+
+\author{Laurent Gatto\\\url{lg390@cam.ac.uk}\\Cambridge Center for Proteomics -- EBI}
+\Plainauthor{Laurent Gatto}
+
+\Keywords{mass spectrometry, proteomics, MSMS, identification, XML}
+\Plainkeywords{mass spectrometry, proteomics, MSMS, identification, XML}
+
+\hyphenation{ma-ni-pu-lating}
+
+\title{\pkg{RpepXML}: an R interface to the pepXML format for peptide identificaiton. }
+\Plaintitle{\pkg{RpepXML}: an R interface to the pepXML format for peptide identificaiton. }
+
+\Abstract{
+  This vignette describes the data structures and associated methods 
+  and functions to import peptide identificaion data in the \code{pepXML} 
+  format. 
+}
+
+\begin{document}
+
+\section{Introduction}
+
+From the \code{pepXML} webpage\footnote{\url{http://tools.proteomecenter.org/wiki/index.php?title=Formats:pepXML}}: 
+\quote{\code{pepXML} is an open data format developed at the SPC/Institute for Systems biology\footnote{%
+    \url{http://tools.proteomecenter.org/wiki/index.php?title=Main_Page}}
+  for the storage, exchange, and processing of peptide sequence assignments of MS/MS scans. 
+  \code{pepXML} is intended to provide a common data output format for many different MS/MS 
+  search engines and subsequent peptide-level analyses. Several search engines already have 
+  native support for outputting \code{pepXML} and converters are available to transform 
+  output files to \code{pepXML}.}
+
+Note that the HUPO Proteomcs Standards Initiative\footnote{\url{http://www.psidev.info/}} 
+(PSI) has also develop an exchange standard for database search results, called \code{mzIdentXML}%
+\footnote{\url{http://www.psidev.info/index.php?q=node/319}}. It is not yet as 
+widely used as \code{pepXML} but should supersede the latter. A \code{RmzIdentML} will be developed 
+when at a later stage. 
+
+Currently, only the generic MSMS identification results of the \code{msms\_pipeline\_analysis} 
+is implemented. This package has currently been tested and developped around Mascot%
+\footnote{\url{http://www.matrixscience.com/}} search results. 
+
+
+\section{Data structure}
+
+The classes implemented mimic a simplified version of the XML structure for the 
+\code{msms\_pipeline\_analysis} element (see the docs%
+\footnote{\url{http://sashimi.sourceforge.net/schema_revision/pepXML/Docs/pepXML_v18.html}}, 
+for a browsable desciption). The structure of the 4 classes is described below, 
+starting with the main, high-level, data structure. Each class and slots are described in the 
+respective on-line manuals.
+
+\section{Session information}
+\label{sec:sessionInfo} 
+
+<<label=sessioninfo,results=tex,echo=FALSE>>=
+toLatex(sessionInfo())
+@
+
+
+\end{document}
+
+
+
+
