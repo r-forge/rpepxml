@@ -84,7 +84,7 @@ setReplaceMethod("spectrumQueries",
 setMethod("show","MSMSpepXML",
           function(object) {
             cat("Object of class",class(object),"\n")
-            cat(" File:",pepFile(object),"\n")
+            cat(" File:",basename(pepFile(object)),"\n")
             cat(" Database:",searchDatabase(object),"\n")
             cat(" Engine:",searchEngine(object),"\n")            
             cat(" Enzyme:",sampleEnzyme(object),"\n")
