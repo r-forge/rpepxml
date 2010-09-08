@@ -33,9 +33,9 @@
   attributes are implemented (yet). The most important elements should
   be in place to import, manipulate and filter pepXML data.
   
-  See the \code{\link{getPkgVigs}} for details about the package's usage
-  and underlying classes. An example data set
-  \code{search.pepXML} is also provided.
+  See the package vignette for details about the package's usage
+  and underlying classes. An dummy example data set
+  \code{tinySearch.pepXML} is also provided.
 }
 
 \author{
