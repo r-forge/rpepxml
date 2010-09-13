@@ -94,7 +94,7 @@ setMethod("show","MSMSpepXML",
 
 
 setMethod("nSearchResults","MSMSpepXML",          
-          function(object) sapply(spectrumQueries(object),nSearchResults))
+          function(object) unlist(sapply(spectrumQueries(object),nSearchResults)))
 
 setMethod("nSearchHits","MSMSpepXML",          
           function(object) sapply(spectrumQueries(object),nSearchHits))
