@@ -130,11 +130,19 @@ setMethod("nProteins","MSMSpepXML",
 
 
 as.matrix.MSMSpepXML <- function(x,...,all=TRUE) {
+  ## get the index of an spectrum query that has
+  ## search hits
+  i <- which(sapply(nSearchHits(x),function(x) x[1]>0))[1]
+  if (is.na(i)) {
+    warning("No search hits found.")
+    return(NULL)
+  }
+  scorenames <- names(scores(x[i][1][1]))
   ret <- lapply(spectrumQueries(x),
                 function(y) {
                   rw <- c(queryIndex(y),spectrumId(y))
                   if (nSearchResults(y)==0) {
-                    rw <- c(rw,"","","0","")
+                    rw <- c(rw,"",rep("",length(scorenames)),"0","")
                     return(rw)
                   } else {
                     if (nSearchResults(y)>1) 
@@ -142,12 +150,12 @@ as.matrix.MSMSpepXML <- function(x,...,all=TRUE) {
                     if (nSearchHits(y)[1]>1)
                       warning("Only keeping first search hit at query index ",queryIndex(y),call.=FALSE)
                     sh <- searchHits(searchResults(y)[[1]])[[1]]
-                    rw <- c(rw,ionScore(sh),pepSequence(sh),nProteins(sh),paste(proteins(sh),collapse=";"))
+                    rw <- c(rw,scores(sh),pepSequence(sh),nProteins(sh),paste(proteins(sh),collapse=";"))
                     return(rw)
                   }
                 })
   ret <- t(as.data.frame(ret))
-  colnames(ret) <- c("QueryIndex","SpectrumId","IonScore",
+  colnames(ret) <- c("QueryIndex","SpectrumId",scorenames,
                      "Sequence","NumProteins","Proteins")
   rownames(ret) <- 1:nrow(ret)
   if (!all) {
