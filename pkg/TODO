@@ -6,5 +6,7 @@
        assignment of an object of class "NULL" is not valid for slot 
        "searchDatabase" in an object of class "MSMSpepXML"; 
        is(value, "character") is not TRUE
+ - [ ] pepSequence, scores,... for higher level classes (MSMSpepXML, 
+       SpectrumQuery,...)
  - [ ] Handle comments in pepXML file
  - [X] update vignette with class structures/relations and examples [2010-09-08 Wed 10:58]
